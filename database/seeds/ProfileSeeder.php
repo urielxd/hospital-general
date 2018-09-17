@@ -13,7 +13,7 @@ class ProfileSeeder extends Seeder
     public function run()
     {
         Profile::create([
-          'nombre' => 'Eduardo',
+          'nombre' => 'Dr. Eduardo Ejemplo',
           'apellido' => 'Glz',
           'fecha_nacimiento' => '09/09/1985',
           'curp' => '12345678912345678',
@@ -23,7 +23,7 @@ class ProfileSeeder extends Seeder
         ]);
 
         Profile::create([
-          'nombre' => 'Maria',
+          'nombre' => 'Dra. Maria Ejemplo',
           'apellido' => 'Jimenez',
           'fecha_nacimiento' => '09/09/1985',
           'curp' => '12345678912345678',

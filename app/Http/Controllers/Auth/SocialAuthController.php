@@ -29,7 +29,7 @@ class SocialAuthController extends Controller
         }
     }
 
-    public function authAndRedirect ($user) 
+    public function authAndRedirect ($user)
     {
         Auth::login($user);
 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-3">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 d-none">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
 

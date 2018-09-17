@@ -13,14 +13,14 @@ class UserSeeder extends Seeder
     public function run()
     {
       User::create([
-        'name' => 'Eduardo',
+        'name' => 'Dr. Eduardo Ejemplo',
         'email' => 'primero@mail.com',
         'password' => bcrypt('secret'),
         'avatar' => 'none',
         'role' => 'doctor'
       ]);
       User::create([
-        'name' => 'Maria',
+        'name' => 'Dra. Maria Ejemplo',
         'email' => 'segundo@mail.com',
         'password' => bcrypt('secret'),
         'avatar' => 'none',
