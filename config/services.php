@@ -38,8 +38,8 @@ return [
     'google' => [
         'client_id' => '701876034054-ofb34e0hi8nqfqr28d7lhuu0j131s9ne.apps.googleusercontent.com',         // Your GitHub Client ID
         'client_secret' => 'G3orfvbdASkEpY3r7CMaxhMq', // Your GitHub Client Secret
-        'redirect' => 'http://localhost:8000/auth/google/callback',
-        //'redirect' => 'https://hospital-regional.herokuapp.com/auth/google/callback',
+        //'redirect' => 'http://localhost:8000/auth/google/callback',
+        'redirect' => 'https://hospital-regional.herokuapp.com/auth/google/callback',
     ],
 
 ];
