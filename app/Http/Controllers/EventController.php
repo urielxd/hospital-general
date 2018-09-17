@@ -30,7 +30,7 @@ class EventController extends Controller
             foreach ($eventos as $e) {
                 array_push($events, [
                     'id' => $e->id,
-                    'title' =>(String)$e->medico->profile->especialidad->name,
+                    'title' =>(String)$e->medico->profile->nombre,
                     'start' => (String)$e->start,
                     'end' => (String)$e->end
                 ]);
