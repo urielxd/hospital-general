@@ -1,0 +1,53 @@
+.header {
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.line-text:after {
+  content: '';
+  height: 3px;
+  width: 60px;
+  border-radius: 2px;
+  background-color: #2884F6;
+  position: absolute;
+  top: 23px;
+  right: calc(100% + 35px);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005);
+  -webkit-transition: -webkit-transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005);
+  transition: -webkit-transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005);
+  transition: transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005);
+  transition: transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005), -webkit-transform 0.75s cubic-bezier(0.77, 0, 0.23, 1.005);
+}
+
+.card-mision {
+  background: url(/images/mision.jpeg?be7e72faf439c9b8bdfa737a7b9f88ee) center/cover;
+}
+
+.card-mision:after {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: '';
+  background: #00B5FF;
+  opacity: .8;
+  width: 100%;
+}
+
+.card-vision {
+  background: url(/images/vision.jpeg?e2525358fd93f7f7ac17fc9fc64ac993) center/cover;
+}
+
+.card-vision:after {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: '';
+  background: #6145E9;
+  opacity: .8;
+  width: 100%;
+}
+
