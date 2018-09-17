@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+
         Builder::macro('past', function($column, $when = 'now', $strict = true) {
             $when = Carbon::parse($when);
             $operator = $strict ? '<' : '<=';
