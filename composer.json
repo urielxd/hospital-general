@@ -6,14 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "appstract/laravel-bootstrap-components": "^1.0",
         "google/apiclient": "^2.2",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "~1.0",
-        "realrashid/sweet-alert": "^1.1",
-        "uxweb/sweet-alert": "^1.4",
         "laravelcollective/html": "~5.0",
-        "midnite81/timekeeper": "0.2.*"
+        "midnite81/timekeeper": "0.2.*",
+        "realrashid/sweet-alert": "^1.1",
+        "uxweb/sweet-alert": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

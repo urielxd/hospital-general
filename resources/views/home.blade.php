@@ -7,6 +7,9 @@
   @if (Auth::user()->role == 'doctor')
     @include('doctor.home')
   @endif
+  @if (Auth::user()->role == 'admin')
+    @include('admin.home')
+  @endif
 @endsection
 
 

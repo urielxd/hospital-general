@@ -11,8 +11,11 @@
 |
 */
 
+use App\Especialidad;
+
 Route::get('/', function () {
-    return view('welcome');
+    $especialidad = Especialidad::all();
+    return view('welcome', compact('especialidad'));
 });
 
 Route::get('home', function() {
@@ -36,5 +39,9 @@ Route::middleware(['auth', 'profile'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/especialidad', 'EspecialidadController@index')->name('especialidad');
     Route::get('/{id}/cita', 'EventController@create')->name('add_event');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('admin/especialidades', 'admin\EspecialidadController');
 });
 

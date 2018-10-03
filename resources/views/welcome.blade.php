@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hospital Regional</title>
+        <title>Hospital General</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded ">
           <div class="container">
-            <a class="navbar-brand" href="#">Hospital Regional</a>
+            <a class="navbar-brand" href="#">Hospital General</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-inner-primary" aria-controls="nav-inner-primary" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,7 +48,13 @@
                         <a class="dropdown-item" href="#">Cuenta</a>
                         <a class="dropdown-item" href="#">Panel</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Cerrar sesión</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar sesión
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                       </div>
                     </li>
                 @endif
@@ -106,150 +112,40 @@
 
                 </h4>
                 <div class="row" style="margin-top: 2em">
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                cirugía general
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Dra. Concha
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                traumatología
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Dr. Salazar
-                                </span>
+                    @foreach ($especialidad as $e)
+                        @if ($e->profile->count() > 0)
+                          <div class="col-12 col-md-4 card-lift--hover">
+                            <div class="card mb-2">
+                              <div class="card-body">
+                                <h4 class="text-center" style="font-size: 1.1rem;font-weight: 600">
+                                  {{ $e->name }}
+                                </h4>
+                                <div class="row">
+                                  @foreach ($e->profile as $doc)
+                                    <div class="col-12">
+                                      <div class="">
+                                        <img src="{{ $doc->user->avatar }}" class="rounded-circle"  style="float:left;margin-right: 5px;width: 35px" alt="">
+                                        <span class="badge badge-pill badge-primary" style="margin-top:7px">
+                                          {{ $doc->nombre }} {{ $doc->apellido }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  @endforeach
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                  <div class="text-center">
+                                    <a href="{{ route('add_event', $e->id) }}" class="btn btn-icon btn-3 btn-outline-default" >
+                                      <span class="btn-inner--icon"><i class="ni ni-active-40"></i></span>
+                                        <span class="btn-inner--text">Agendar</span>
+                                    </a>
+                                  </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
+                        @endif
+                      @endforeach
 
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                GINECO-OBSTETRICIA
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Dra. Alejandra Ramirez
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                odontología
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Dra. Aparicio
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                medicina interna
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Dra. García
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                psicología
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Lic. Cortez
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                psicología
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Lic. Cortez
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-2">
-                        <div class="card card-lift--hover ">
-                          <div class="card-body py-5">
-                            <div class="text-center postion-relative mb-3">
-
-                            </div>
-                            <h6 style="font-weight: 600" class=" text-uppercase text-center">
-                                nutrición
-                            </h6>
-                            <div class="position-relative text-center w-100 h-100">
-                                <img src="{{ asset('img/dr.svg') }}" alt="">
-                                <span class="text-center badge badge-pill badge-primary">
-                                    Lic. Sanchez
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-
+Vue.use(BootstrapVue);
 window.Vue = require('vue');
 
 /**
@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('especialidad', require('./components/admin/especialidad.vue'));
 
 const app = new Vue({
     el: '#app'
