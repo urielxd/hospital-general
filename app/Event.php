@@ -8,6 +8,7 @@ class Event extends Model
 {
     use TimeKeeper;
     protected $fillable = [ 'title', 'description', 'color', 'start', 'end', 'paciente', 'doctor'];
+
     protected $dates = ['start', 'end'];
 
     public function medico ()

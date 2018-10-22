@@ -80,7 +80,7 @@ class EventController extends Controller
             $doctores = DB::table('profiles')->where('especialidad_id', $id)->get();
             $doctores = $doctores->pluck('nombre', 'id');
             if ($doctores->count() > 0) {
-                return view('event.create', compact('doctores'));
+                return view('event.create', compact('doctores', 'especialidad'));
             } else {
                 toast('Lo siento, por el momento no hay doctores en esta especialidad','error','center')->autoClose(6000);
                 return redirect()->route('especialidad');

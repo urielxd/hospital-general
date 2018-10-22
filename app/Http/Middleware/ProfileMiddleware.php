@@ -16,7 +16,7 @@ class ProfileMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->profile) {
+        if (Auth::user()->profile || Auth::user()->role == 'admin') {
             return $next($request);
         } else {
             toast('Crea tu perfil para poder continuar.','error','top-center')->autoClose(6000);

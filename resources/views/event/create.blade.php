@@ -3,6 +3,9 @@
 @section('content')
   <div class="container mt-4">
     <div class="row">
+      <div class="col-12">
+        {!! Breadcrumbs::render('add-cita', $especialidad->id) !!}
+      </div>
       <div class="col-12 col-md-4">
         <div class="card">
           <div class="card-header">
@@ -28,7 +31,8 @@
     $('#datepicker').bootstrapMaterialDatePicker({
       lang: 'es',
       format : 'YYYY/MM/DD HH:mm',
-      shortTime: true
+      shortTime: true,
+      daysOfWeekDisabled: [6, 7]
     });
   </script>
   <script>

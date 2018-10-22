@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class DoctorController extends Controller
 {
@@ -14,7 +15,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.doctores.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.doctores.create');
     }
 
     /**
@@ -35,7 +36,20 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        User::create([
+            'avatar' => 'http://everydaynutrition.co.uk/wp-content/uploads/2015/01/default-user-avatar.png',
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'doctor'
+        ]);
+        toast('Doctor agregado.','success','top-right')->autoClose(6000);
+        return redirect()->route('doctores.index');
     }
 
     /**
@@ -57,7 +71,9 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.doctores.edit', compact('user'));
+
     }
 
     /**
@@ -69,7 +85,12 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->update();
+        toast('Doctor actualizado','success','top-right')->autoClose(6000);
+        return redirect()->route('doctores.index');
     }
 
     /**
@@ -80,6 +101,6 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

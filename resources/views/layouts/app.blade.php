@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Hospital General</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Fonts -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -44,7 +46,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-light">
       <div class="container">
         <a class="navbar-brand" href="/">Hospital General</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-inner-primary" aria-controls="nav-inner-primary" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,20 +97,20 @@
       </div>
     </nav>
 
-
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-            @if(Session::has('message'))
-              <p class="alert alert-primary">
-                {{ Session::get('message') }}
-              </p>
-            @endif
+    <div id="">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+              @if(Session::has('message'))
+                <p class="alert alert-primary">
+                  {{ Session::get('message') }}
+                </p>
+              @endif
+          </div>
         </div>
       </div>
+      @yield('content')
     </div>
-
-    @yield('content')
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -128,6 +130,7 @@
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/es.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
     <script src="https://fullcalendar.io/releases/fullcalendar-scheduler/1.9.4/scheduler.min.js"></script>

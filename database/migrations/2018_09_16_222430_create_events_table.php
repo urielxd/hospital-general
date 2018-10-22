@@ -20,7 +20,9 @@ class CreateEventsTable extends Migration
                 ->unsigned();
             $table->foreign('paciente')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->integer('doctor')
                 ->unsigned();
@@ -33,6 +35,7 @@ class CreateEventsTable extends Migration
             $table->string('color')->nullable();
             $table->datetime('start')->nullable();
             $table->datetime('end')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

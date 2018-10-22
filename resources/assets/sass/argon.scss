@@ -99,3 +99,12 @@
 @import "custom/vendor/bootstrap-datepicker.scss";
 @import "custom/vendor/headroom.scss";
 @import "custom/vendor/nouislider.scss";
+
+body {
+  background: #f9f9f9;
+}
+
+label {
+  font-weight: 800;
+  font-size: .9rem;
+}

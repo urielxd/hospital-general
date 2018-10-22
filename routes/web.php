@@ -42,6 +42,28 @@ Route::middleware(['auth', 'profile'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('admin/especialidades', 'admin\EspecialidadController');
+    Route::prefix('admin')->group(function () {
+        Route::resource('especialidades', 'admin\EspecialidadController');
+        Route::resource('citas', 'admin\CitaController');
+        Route::resource('administradores', 'admin\AdminController');
+        Route::resource('doctores', 'admin\DoctorController');
+        Route::resource('pacientes', 'admin\PacienteController');
+        Route::get('pacientes/profile/{id}', 'admin\PacienteController@create_profile')->name('pacientes.profile');
+        Route::post('pacientes/profile/store/{id}', 'admin\PacienteController@store_profile')->name('pacientes.profile.store');
+        Route::get('pacientes/profile/edit/{id}', 'admin\PacienteController@edit_profile')->name('pacientes.profile.edit');
+        Route::put('pacientes/profile/update/{id}', 'admin\PacienteController@update_profile')->name('pacientes.profile.update');
+        Route::resource('horarios','admin\ScheduleController');
+    });
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('api')->group(function () {
+        Route::resource('doctor', 'Api\DoctorController');
+        Route::resource('paciente', 'Api\PacienteController');
+        Route::resource('category', 'Api\EspecialidadController');
+        Route::resource('eventos', 'Api\CitaController');
+        Route::resource('apiadmin','Api\AdminController');
+        Route::get('filter','Api\CitaController@filter');
+    });
 });
 

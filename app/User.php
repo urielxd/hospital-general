@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function schedule ()
+    {
+        return $this->hasOne(Schedule::class);
+    }
+
     public function events_doctor ()
     {
         return $this->hasMany(Event::class, 'doctor');

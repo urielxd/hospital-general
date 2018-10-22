@@ -8,7 +8,7 @@
     @endif
   </div>
 </div>
-<div class="col-md-12 col-12">
+{{-- <div class="col-md-12 col-12">
   <div class="form-group{{ $errors->has('start') ? ' has-danger' : '' }}">
     <div class="input-group date" >
       <div class="input-group-prepend">
@@ -21,6 +21,13 @@
           <strong>{{ $errors->first('start') }}</strong>
       </div>
     @endif
+  </div>
+</div> --}}
+<div class="col-12">
+  <div class="form-group">
+    <div id="app">
+      <input-date></input-date>
+    </div>
   </div>
 </div>
 <div class="col-md-6 col-12">

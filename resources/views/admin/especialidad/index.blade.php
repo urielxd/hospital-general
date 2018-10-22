@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  <example></example>
   <div class="container mt-4">
     <div class="row">
+      <div class="col-12">
+        {!! Breadcrumbs::render('especialidades') !!}
+      </div>
       <div class="col-12">
         <a href="{{ route('especialidades.create') }}" class="btn btn-primary text-white mb-3">
           Nueva especialidad

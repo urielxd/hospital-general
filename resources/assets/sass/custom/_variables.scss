@@ -21,7 +21,7 @@ $gray-500: #adb5bd !default;
 $gray-600: #8898aa !default;   // Line footer color
 $gray-700: #525f7f !default;   // Line p color
 $gray-800: #32325d !default;
-$gray-900: #212529 !default;
+$gray-900: #303030 !default;
 $black:    #000 !default;
 
 $grays: () !default;
@@ -68,13 +68,13 @@ $colors: map-merge((
 ), $colors);
 
 $default:       #172b4d !default;
-$primary:       #004a24 !default;
+$primary:       #1c66f4 !default;
 $secondary:     #f4f5f7 !default;
 $success:       $green !default;
 $info:          $teal !default;
 $warning:       $orange !default;
 $danger:        $red !default;
-$light:         $gray-500 !default;
+$light:         #fbfbfb !default;
 $dark:          $gray-900 !default;
 $darker:        darken($gray-900, 15%) !default;
 
@@ -338,7 +338,7 @@ $headings-margin-bottom:      ($spacer / 2);
 $headings-font-family:        inherit !default;
 $headings-font-weight:        $font-weight-normal !default;
 $headings-line-height:        1.5 !default;
-$headings-color:              $gray-800 !default;
+$headings-color:              $gray-900 !default;
 
 $heading-letter-spacing:      .025em !default;
 $heading-font-size:           .95rem !default;

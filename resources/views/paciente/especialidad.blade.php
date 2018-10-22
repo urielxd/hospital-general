@@ -4,7 +4,10 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-12">
-        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        {!! Breadcrumbs::render('especialidad-paciente') !!}
+      </div>
+      <div class="col-12">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
           <span class="alert-inner--text"><strong>Atención!</strong> selecciona la especialidad que deseas agendar la cita.</span>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">

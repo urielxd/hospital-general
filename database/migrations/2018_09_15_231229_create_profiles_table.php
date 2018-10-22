@@ -20,7 +20,9 @@ class CreateProfilesTable extends Migration
                 ->unsigned();
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->string('nombre');
             $table->string('apellido');
@@ -40,6 +42,7 @@ class CreateProfilesTable extends Migration
             $table->string('relacion')->nullable();
             $table->string('temporal')->nullable();
             $table->string('temporal_2')->nullable();
+            $table->softDeletes();
             // Doctor
             $table->string('cedula_profesional')->nullable();
         });

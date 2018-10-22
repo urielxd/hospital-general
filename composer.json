@@ -7,12 +7,15 @@
     "require": {
         "php": ">=5.6.4",
         "appstract/laravel-bootstrap-components": "^1.0",
+        "davejamesmiller/laravel-breadcrumbs": "3.x",
         "google/apiclient": "^2.2",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.0",
+        "laraveles/spanish": "^1.1",
         "midnite81/timekeeper": "0.2.*",
+        "nicolaslopezj/searchable": "1.*",
         "realrashid/sweet-alert": "^1.1",
         "uxweb/sweet-alert": "^1.4"
     },

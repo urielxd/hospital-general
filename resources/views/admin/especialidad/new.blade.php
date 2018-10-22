@@ -3,6 +3,9 @@
 @section('content')
   <div class="container mt-4">
     <div class="row justify-content-center">
+      <div class="col-12">
+        {!! Breadcrumbs::render('especialidades-new') !!}
+      </div>
       <div class="col-md-6 col-12">
         <div class="card bg-secondary shadow">
           <div class="card-header bg-white bg-transparent">

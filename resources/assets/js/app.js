@@ -4,20 +4,40 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue'
 
-require('./bootstrap');
-Vue.use(BootstrapVue);
 window.Vue = require('vue');
 
+const moment = require('moment')
+require('moment/locale/es')
+
+Vue.use(BootstrapVue);
+
+Vue.use(require('vue-moment'), {
+    moment
+});
+
+Vue.component('especialidad', require('./components/admin/especialidad'));
+Vue.component('citas', require('./components/admin/citas'));
+Vue.component('administradores', require('./components/admin/administradores'));
+Vue.component('doctores', require('./components/admin/doctores'));
+Vue.component('pacientes', require('./components/admin/pacientes'));
+Vue.component('horarios', require('./components/admin/horarios'));
+Vue.component('input-date', require('./components/date-input'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('especialidad', require('./components/admin/especialidad.vue'));
+document.addEventListener('DOMContentLoaded', () => {
 
-const app = new Vue({
-    el: '#app'
+  if(document.getElementById("app")) {
+    const app = new Vue({
+      el: '#app'
+    });
+  }
+
 });
+

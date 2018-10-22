@@ -8,12 +8,13 @@
         <title>Hospital General</title>
 
         <!-- Fonts -->
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/argon.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white rounded border-bottom border-light">
           <div class="container">
             <a class="navbar-brand" href="#">Hospital General</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-inner-primary" aria-controls="nav-inner-primary" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,45 +63,96 @@
             </div>
           </div>
         </nav>
-        <div class="header w-100 position-relative bg-primary">
+        <div class="header w-100 position-relative ">
             <div class="container mt-3">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <div class="card shadow mt-3">
-                            <div class="card-body">
+                    <div class="col-12 col-md-7 col-lg-7">
+                        <img src="{{ asset('img/doctor.svg') }}" alt="" class="img-fluid mt-4">
+                    </div>
+                    <div class="col-12 col-md-5 col-lg-5">
+                        @if (Auth::user())
+                            <div class="card shadow" style="margin-top: 6em">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                    <div class="col-8">
+                                        <h4 class="d-block" style="font-size: 1.2rem">
+                                            {{ Auth::user()->name }}
+                                        </h4>
+                                        <span style="" class="text-center badge badge-pill badge-dark">
+                                            {{ Auth::user()->email }}
+                                        </span>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img src="{{ Auth::user()->avatar }}" alt="" style="float:left" class="img-fluid  shadow" style="width: 50px">
+                                    </div>
+                                </div>
+                                </div>
                                 @if (Auth::user())
-                                    <img src="{{ Auth::user()->avatar }}" alt="" style="float:left" class="img-fluid rounded-circle shadow" style="width: 50px">
-                                    <h4 class="d-block" style="margin-left: 2.8em;margin-bottom: -.3em">
-                                        {{ Auth::user()->name }}
-                                    </h4>
-                                    <span style="margin-left: 2em" class="text-center badge badge-pill badge-primary">
-                                        {{ Auth::user()->email }}
-                                    </span>
-                                    <div class="text-center">
-                                        <a href="{{ route('home') }}" class="btn btn-primary mt-3">
-                                            Ir al panel de administración
+                                    <div class="card-footer text-center">
+                                        <a href="{{ route('home') }}" class="text-dark" style="font-weight: 600;font-size: .8rem">
+                                            IR AL PANEL DE ADMINISTRACIÓN
+                                            <i class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
-                                @else
-                                    <h4 class="display-4 text-center">
-                                        HOSPITAL REGIONAL
-                                        <br>
-                                        “DOCTOR PEDRO ESPINOZA RUEDA”
-                                    </h4>
+                                @endif
+                            </div>
+                        @else
+
+                            <div class="card bg-secondary shadow border-0">
+                              <div class="card-header bg-white pb-5">
+                                <div class="text-muted text-center mb-3">
+                                  <small>Si eres paciente inicia sesión con:</small>
+                                </div>
+                                <div class="btn-wrapper text-center">
                                     <a class="btn btn-neutral btn-icon btn-block btn-lg" href="{{ Route('social.auth', 'google')  }}">
                                         <span class="btn-inner--icon">
                                             <img src="{{ asset('img/google.svg') }}" alt="">
                                         </span>
                                         <span class="btn-inner--text">Entrar con google</span>
                                     </a>
-                                @endif
+                                </div>
+                              </div>
+                              <div class="card-body px-lg-5 py-lg-5">
+                                <div class="text-center text-muted mb-4">
+                                  <small>O si eres doctor o administrador con:</small>
+                                </div>
+                                <form role="form" method="POST" action="{{ route('login') }}">
+                                    {{ csrf_field() }}
+                                  <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                      </div>
+                                      <input name="email" class="form-control" placeholder="Email" type="email" value="{{ old('email') }}" required autofocus>
+                                    </div>
+                                    @if ($errors->has('email'))
+                                      <div class="invalid-feedback d-block">
+                                          <strong>{{ $errors->first('email') }}</strong>
+                                      </div>
+                                    @endif
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                      </div>
+                                      <input class="form-control" name="password" placeholder="Contraseña" type="password">
+                                    </div>
+                                  </div>
+                                  <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for=" customCheckLogin">
+                                      <span>Recordar sesión</span>
+                                    </label>
+                                  </div>
+                                  <div class="text-center">
+                                    <button type="submit" class="btn btn-primary my-4">Entrar</button>
+                                  </div>
+                                </form>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-6">
-                        <div class="position-relative w-100 h-100 d-none d-md-block d-lg-block">
-                            <img src="{{ asset('img/doctor.svg') }}" class="position-absolute img-fluid" style="left:50%;top:14%;margin:auto" alt="">
-                        </div>
+
+                        @endif
                     </div>
                 </div>
             </div>
@@ -109,7 +161,6 @@
             <div class="container">
                 <h4 class="line-text display-4 mb-3 mt-2 position-relative" >
                     Especialidades
-
                 </h4>
                 <div class="row" style="margin-top: 2em">
                     @foreach ($especialidad as $e)
@@ -117,7 +168,7 @@
                           <div class="col-12 col-md-4 card-lift--hover">
                             <div class="card mb-2">
                               <div class="card-body">
-                                <h4 class="text-center" style="font-size: 1.1rem;font-weight: 600">
+                                <h4 class="" style="font-size: 1.1rem;font-weight: 600">
                                   {{ $e->name }}
                                 </h4>
                                 <div class="row">
@@ -149,29 +200,27 @@
                 </div>
             </div>
         </section>
-        <section class="header position-relative w-100 bg-secondary">
+        <section class="header position-relative w-100">
             <div class="container">
                 <div class="row" style="margin-top: 4em;margin-bottom: 4em;">
                     <div class="col-12 col-lg-6 col-md-6">
-                        <h4 class="line-text display-4 mb-3 mt-4 position-relative" >
+                        <h3 style="font-size: 2.2rem;font-weight: 800" class="line-text mb-3 mt-4 position-relative" >
                             Misión
-
-                        </h4>
+                        </h3>
                         <p class="mt-4">
                             Brindar  atención médica de segundo nivel de atención en las cuatro especialidades básicas: Gineco-Obstetricia, Pediatría, Medicina Interna, Cirugía General y Urgencias las 24 Horas del día con apoyo de  los auxiliares de diagnóstico y tratamiento, con eficacia, eficiencia, equidad, y con calidad y calidez a la población del área de influencia Hospital.
                         </p>
                     </div>
                     <div class="col-12 col-lg-6 col-md-6 d-none d-md-block d-lg-block">
-                        <img src="{{ asset('img/mision.jpeg') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('img/mision.jpeg') }}" alt="" class="img-fluid bordered">
                     </div>
                     <div class="col-12 col-lg-6 col-md-6 d-none d-md-block d-lg-block">
-                        <img src="{{ asset('img/vision.jpeg') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('img/vision.jpeg') }}" alt="" class="img-fluid bordered">
                     </div>
                     <div class="col-12 col-lg-6 col-md-6">
-                        <h4 class="line-text display-4 mb-3 mt-4 position-relative" >
+                        <h3 style="font-size: 2.2rem;font-weight: 800" class="line-text mb-3 mt-4 position-relative" >
                             Visión
-
-                        </h4>
+                        </h3>
                         <p class="mt-4">
                             Construirse con un hospital líder en la costa chica de Oaxaca con mejora continua en la calidad de la atención para poder satisfacer paulatinamente el incremento en la demanda de los servicios de la población del área de influencia y con ello contribuir a la satisfacción de sus necesidades y mejorar con la calidad de vida y la salud publica en la región.
                         </p>
@@ -179,7 +228,7 @@
                 </div>
             </div>
         </section>
-        <div class=" w-100 position-relative ">
+        <div class=" w-100 position-relative " style="margin-top: 3em">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-md-6 mt-4">

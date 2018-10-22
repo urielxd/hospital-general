@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -179,6 +179,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Laraveles\Spanish\SpanishServiceProvider::class,
 
     ],
 
@@ -232,7 +234,8 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'BootstrapComponents' => Appstract\BootstrapComponents\BootstrapComponentsFacade::class
+        'BootstrapComponents' => Appstract\BootstrapComponents\BootstrapComponentsFacade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class
     ],
 
 ];
