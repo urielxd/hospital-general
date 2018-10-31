@@ -25,6 +25,7 @@ Vue.component('doctores', require('./components/admin/doctores'));
 Vue.component('pacientes', require('./components/admin/pacientes'));
 Vue.component('horarios', require('./components/admin/horarios'));
 Vue.component('input-date', require('./components/date-input'));
+Vue.component('paciente-cita', require('./components/admin/paciente-cita'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

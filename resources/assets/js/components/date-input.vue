@@ -1,7 +1,7 @@
 <template>
   <div>
     <datetime
-      name= "start"
+      :name= "name"
       type="datetime"
       v-model="date"
       input-class="form-control"
@@ -20,6 +20,7 @@
   import { Datetime } from 'vue-datetime';
   import 'vue-datetime/dist/vue-datetime.css'
   export default {
+    props: ['name'],
     data: function () {
       return {
         date: ''

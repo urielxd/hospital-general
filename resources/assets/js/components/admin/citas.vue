@@ -5,7 +5,7 @@
         <div class="container mt-2">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <a href="" class="btn btn-primary text-white">
+                    <a href="/admin/agendar/citas/pacientes" class="btn btn-primary text-white">
                         Nueva cita
                     </a>
                 </div>
@@ -41,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="cita in filterCita" v-if="citas.length > 0">
+                                <tr v-for="cita in filterCita" v-if="citas.length > 0" v-bind:key="cita.id">
                                     <td>
                                        <img v-bind:src="cita.medico.avatar" alt="" class="rounded-circle" style="width: 30px">
                                     </td>
@@ -49,7 +49,12 @@
                                     <td>{{ cita.cliente.name }}</td>
                                     <td>{{ cita.start | moment("dddd D, MMMM  YYYY") }}</td>
                                     <td>{{ cita.start | moment("h:mm") }}</td>
-                                    <td>{{ cita.medico.profile.especialidad.name }}</td>
+                                    <td v-if="cita.medico.profile">{{ cita.medico.profile.especialidad.name }}</td>
+                                    <td v-if="!cita.medico.profile">
+                                        <span class="badge badge-danger">
+                                            Sin especialidad
+                                        </span>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <a :href="`citas/${cita.id}/edit`" class="btn btn-secondary">

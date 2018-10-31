@@ -4,17 +4,17 @@
             :can-cancel="false"></loading>
     <div class="row">
       <div class="col-12 mb-2 mt-1">
-        <a href="/admin/doctores/create" class="btn btn-primary text-white mb-2">
-          Nuevo Doctor
+        <a href="/admin/pacientes/create" class="btn btn-primary text-white mb-2">
+          Nuevo Paciente
         </a>
       </div>
       <div class="col-12">
        <div class="card shadow">
          <div class="card-header bg-white">
-           <h4>Doctores</h4>
-           <div class="form-group"> 
+           <h4>Pacientes</h4>
+           <div class="form-group">
              <div class="input-group-alternative">
-               <input v-model="search" placeholder="Busca por nombre" type="text" class="form-control form-control-alternative">
+               <input v-model="search" placeholder="Busca el paciente por nombre" type="text" class="form-control fomr-control-alternative">
              </div>
            </div>
          </div>
@@ -29,24 +29,21 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="admin in filterData" v-bind:key="admin.id">
+                <tr v-for="paciente in filterData" v-if="paciente.profile" v-bind:key="paciente.id">
                   <td>
-                    <img :src="admin.avatar" class="rounded-circle" style="width: 30px" alt="">
+                    <img :src="paciente.avatar" class="rounded-circle" style="width: 30px" alt="">
                   </td>
                   <td>
-                    {{ admin.name }}
+                    {{ paciente.name }}
                   </td>
                   <td>
-                    {{ admin.email }}
+                    {{ paciente.email }}
                   </td>
                   <td>
                     <div class="btn-group">
-                      <a :href="'/admin/doctores/' + admin.id + '/edit'" class="btn btn-primary text-white">
-                        <i class="fas fa-edit"></i>
+                      <a :href="'/admin/paciente/agendar/cita/' + paciente.id" class="btn btn-primary">
+                        Agendar cita
                       </a>
-                      <button @click="delete_admin(admin.id)" class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
                     </div>
                   </td>
                 </tr>
@@ -71,7 +68,7 @@
   export default {
     data: function () {
       return {
-        doctores: [],
+        pacientes: [],
         loading: false,
         current_page: null,
         total_page: null,
@@ -87,8 +84,8 @@
     },
     computed: {
       filterData() {
-        return this.doctores.filter(doctor => {
-          return doctor.name.toLowerCase().includes(this.search.toLowerCase()) 
+        return this.pacientes.filter(paciente => {
+          return paciente.name.toLowerCase().includes(this.search.toLowerCase()) 
         })
       },
     },
@@ -96,9 +93,9 @@
       get_admin () {
         const vm = this;
         this.loading = true
-        axios.get('/api/doctor')
+        axios.get('/api/paciente')
           .then(response => {
-            this.doctores = response.data.data;
+            this.pacientes = response.data.data;
             vm.current_page = parseInt(response.data['current_page']);
             vm.total_page = parseInt(response.data['total']);
             vm.per_page = parseInt(response.data['per_page']);
@@ -111,9 +108,9 @@
       next_page (event) {
         const vm = this;
         this.loading = true;
-        axios.get(`/api/doctor?page=${event}`)
+        axios.get(`/api/paciente?page=${event}`)
           .then(function (response) {
-            vm.doctores = response.data.data;
+            vm.pacientes = response.data.data;
             vm.loading = false;
           })
           .catch(function (error) {
@@ -121,7 +118,7 @@
             console.log(error);
           })
       },
-      delete_admin (id) {
+      delete_paciente (id) {
         const vm = this;
         swal({
           title: 'Estas seguro?',
@@ -134,7 +131,7 @@
           cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
-              axios.delete(`/api/doctor/${id}`)
+              axios.delete(`/api/paciente/${id}`)
                 .then( (response) => {
                     vm.get_admin();
                     swal(

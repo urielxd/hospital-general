@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use Carbon\Carbon;
 use App\User;
+use App\Profile;
 use Auth;
 use App\Especialidad;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,8 @@ class EventController extends Controller
             foreach ($eventos as $e) {
                 array_push($events, [
                     'id' => $e->id,
-                    'title' => "Cita agendada",
+                    'doctor' => $e->medico->name,
+                    'title' => "Cita agendada / ".$e->medico->profile['nombre'],
                     'start' => (String)$e->start,
                     'end' => (String)$e->end
                 ]);
@@ -99,27 +101,45 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $today = Carbon::now();
         $this->validate($request, [
             'doctor' => 'required',
             'start' => 'required',
         ]);
         $from = Carbon::parse($request->start);
+        if ($from < $today) {
+            toast('Fecha no valida','error','center')->autoClose(6000);
+            return redirect()->back();
+        }
         $to = Carbon::parse($request->start)->addMinutes(60);
-        $user = User::where('id', $request->doctor)->first();
-        $events = Event::where('doctor', $user->id)->get();
-        $event = $user->events_doctor()->overlapsWith($from, $to, 'start', 'end')->exists();
-        //dd($user->events_doctor()->count());
-        if (!$event) {
-            Event::create([
-                'doctor' => $request->doctor,
-                'paciente' => Auth::user()->id,
-                'start' => $from,
-                'end' => $to
-            ]);
-            toast('Cita agendada','success','top-right')->autoClose(6000);
-            return redirect()->route('home');
+        $profile = Profile::find($request->doctor);
+        $user = User::find($profile->user_id);
+
+        if ($user->schedule) {
+            if ( $from >= Carbon::parse($user->schedule->start) && $to <= Carbon::parse($user->schedule->end) ) {
+
+                $events = Event::where('doctor', $user->id)->get();
+                $event = $user->events_doctor()->overlapsWith($from, $to, 'start', 'end')->exists();
+                if (!$event) {
+                    Event::create([
+                        'doctor' => $user->id,
+                        'paciente' => Auth::user()->id,
+                        'start' => $from,
+                        'end' => $to
+                    ]);
+                    toast('Cita agendada','success','top-right')->autoClose(6000);
+                    return redirect()->route('home');
+                } else {
+                    toast('No esta disponible, intenta con otra fecha','error','center')->autoClose(6000);
+                    return redirect()->back();
+                }
+
+            } else {
+                toast('No se puede agendar para esa fecha','error','center')->autoClose(6000);
+                return redirect()->back();
+            }
         } else {
-            toast('No esta disponible, intenta con otra fecha','error','center')->autoClose(6000);
+            toast('No hay horario disponible, intente mas tarde','error','center')->autoClose(6000);
             return redirect()->back();
         }
     }

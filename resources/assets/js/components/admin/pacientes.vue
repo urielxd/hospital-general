@@ -12,6 +12,11 @@
        <div class="card shadow">
          <div class="card-header bg-white">
            <h4>Pacientes</h4>
+           <div class="form-group"> 
+             <div class="input-group-alternative">
+               <input v-model="search" placeholder="Busca por nombre" type="text" class="form-control form-control-alternative">
+             </div>
+           </div>
          </div>
          <div class="card-body p-0 bg-secondary">
             <table class="table">
@@ -24,7 +29,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="paciente in pacientes">
+                <tr v-for="paciente in filterData" v-bind:key="paciente.id">
                   <td>
                     <img :src="paciente.avatar" class="rounded-circle" style="width: 30px" alt="">
                   </td>
@@ -55,7 +60,7 @@
             </table>
          </div>
          <div class="card-footer">
-            <b-pagination @change="next_page" size="md" :total-rows="total_page" v-model="current_page" :per-page="per_page"></b-pagination >
+            <b-pagination v-if="search === ''" @change="next_page" size="md" :total-rows="total_page" v-model="current_page" :per-page="per_page"></b-pagination >
          </div>
        </div>
       </div>
@@ -77,6 +82,7 @@
         current_page: null,
         total_page: null,
         per_page: null,
+        search: ''
       }
     },
     mounted () {
@@ -84,6 +90,13 @@
     },
     components: {
       Loading
+    },
+    computed: {
+      filterData() {
+        return this.pacientes.filter(paciente => {
+          return paciente.name.toLowerCase().includes(this.search.toLowerCase()) 
+        })
+      },
     },
     methods:  {
       get_admin () {

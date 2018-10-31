@@ -52,7 +52,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('pacientes/profile/store/{id}', 'admin\PacienteController@store_profile')->name('pacientes.profile.store');
         Route::get('pacientes/profile/edit/{id}', 'admin\PacienteController@edit_profile')->name('pacientes.profile.edit');
         Route::put('pacientes/profile/update/{id}', 'admin\PacienteController@update_profile')->name('pacientes.profile.update');
+        
         Route::resource('horarios','admin\ScheduleController');
+        Route::get('doctor/{id}/horario','admin\ScheduleController@create');
+        
+        Route::get('/agendar/citas/pacientes', 'admin\CitaController@pacientes')->name('cita_paciente');
+        Route::get('/paciente/agendar/cita/{id}', 'admin\CitaController@especialidades')->name('cita_especialidad');
+        Route::get('/paciente/agendar/cita/{id}/especialidad/{especialidad}', 'admin\CitaController@event')->name('cita_especialidad_event');
+        Route::post('/paciente/agendar/store', 'admin\CitaController@store_event')->name('store_event');
     });
 });
 

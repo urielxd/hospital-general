@@ -15,6 +15,9 @@
           </div>
           <div class="card-body">
             {!! Form::model($cita, array('route' => array('citas.update', $cita->id), 'method' => 'PUT')) !!}
+              <div class="alert alert-warning">
+                <strong>Fecha agendada:</strong> {{ $cita->start }}
+              </div>
               @include('event.form')
             {!! Form::close() !!}
           </div>

@@ -97,6 +97,22 @@ Breadcrumbs::register('horarios', function($breadcrumbs)
     $breadcrumbs->push('Horarios', route('horarios.index'));
 });
 
+Breadcrumbs::register('paciente-cita', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Selecciona el paciente', route('cita_paciente'));
+});
+Breadcrumbs::register('especialidad-cita', function($breadcrumbs, $e)
+{
+    $breadcrumbs->parent('paciente-cita');
+    $breadcrumbs->push('Selecciona la especialidad ', route('cita_especialidad', $e->id));
+});
+Breadcrumbs::register('paciente-nueva-cita', function($breadcrumbs, $e)
+{
+    $breadcrumbs->parent('especialidad-cita', $e);
+    $breadcrumbs->push('Agendar cita', route('cita_especialidad_event', array($e->id, $e->id)));
+});
+
 // Pacientes
 Breadcrumbs::register('especialidad-paciente', function($breadcrumbs)
 {

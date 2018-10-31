@@ -16,6 +16,7 @@ class DoctorController extends Controller
     public function index()
     {
         $doctores = User::where('role', 'doctor')
+                            ->with('schedule')
                             ->OrderBy('id', 'DESC')
                             ->paginate(10);
         return response()

@@ -26,7 +26,7 @@
 <div class="col-12">
   <div class="form-group">
     <div id="app">
-      <input-date></input-date>
+      <input-date name="start"></input-date>
     </div>
   </div>
 </div>
