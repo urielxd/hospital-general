@@ -177,7 +177,7 @@
     </div>
   </div>
 
-   <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('temporal') ? ' has-danger' : '' }}">
       {{ Form::select('temporal', ['Primera vez', 'Subsecuente'] ,null, $attributes = $errors->has('temporal') ? array('placeholder' => 'Relación temporal por motivo', 'class' => 'form-control is-invalid') : array('placeholder' => 'Relación temporal por motivo', 'class' => 'form-control') ) }}
       @if ($errors->has('temporal'))

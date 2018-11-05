@@ -93,7 +93,7 @@
 
 <div class="col-md-6 col-12">
   <div class="form-group{{ $errors->has('derechohabiencia') ? ' has-danger' : '' }}">
-    {{ Form::select('derechohabiencia', ['Imss', 'Issste', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
+    {{ Form::select('derechohabiencia', ['Imss', 'Issste','Seguro popular', 'Prospera', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
     @if ($errors->has('derechohabiencia'))
       <div class="invalid-feedback">
           <strong>{{ $errors->first('derechohabiencia') }}</strong>
@@ -153,6 +153,16 @@
   </div>
 </div>
 <div class="col-md-6 col-12">
+    <div class="form-group{{ $errors->has('temporal') ? ' has-danger' : '' }}">
+      {{ Form::select('temporal', ['Primera vez', 'Subsecuente'] ,null, $attributes = $errors->has('temporal') ? array('placeholder' => 'Relación temporal por motivo', 'class' => 'form-control is-invalid') : array('placeholder' => 'Relación temporal por motivo', 'class' => 'form-control') ) }}
+      @if ($errors->has('temporal'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('temporal') }}</strong>
+        </div>
+      @endif
+    </div>
+  </div>
+{{-- <div class="col-md-6 col-12">
   <div class="form-group{{ $errors->has('temporal') ? ' has-danger' : '' }}">
     {{ Form::text('temporal', null, $attributes = $errors->has('temporal') ? array('placeholder' => 'Temporal', 'class' => 'form-control is-invalid') : array('placeholder' => 'Temporal', 'class' => 'form-control') ) }}
     @if ($errors->has('temporal'))
@@ -171,7 +181,7 @@
       </div>
     @endif
   </div>
-</div>
+</div> --}}
 
 <div class="col-12">
   <div class="form-group">
