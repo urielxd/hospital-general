@@ -117,7 +117,7 @@
 
   <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('derechohabiencia') ? ' has-danger' : '' }}">
-      {{ Form::select('derechohabiencia', ['Imss', 'Issste', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
+      {{ Form::select('derechohabiencia', ['Imss', 'Issste','Seguro popular', 'Prospera', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
       @if ($errors->has('derechohabiencia'))
         <div class="invalid-feedback">
             <strong>{{ $errors->first('derechohabiencia') }}</strong>
@@ -178,7 +178,7 @@
   </div>
   <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('temporal') ? ' has-danger' : '' }}">
-      {{ Form::text('temporal', null, $attributes = $errors->has('temporal') ? array('placeholder' => 'Temporal', 'class' => 'form-control is-invalid') : array('placeholder' => 'Temporal', 'class' => 'form-control') ) }}
+      {{ Form::text('temporal', null, $attributes = $errors->has('temporal') ? array('placeholder' => 'Relacion temporal por motivo', 'class' => 'form-control is-invalid') : array('placeholder' => 'Relacion temporal por motivo', 'class' => 'form-control') ) }}
       @if ($errors->has('temporal'))
         <div class="invalid-feedback">
             <strong>{{ $errors->first('temporal') }}</strong>
@@ -186,7 +186,7 @@
       @endif
     </div>
   </div>
-  <div class="col-md-6 col-12">
+  {{-- <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('temporal_2') ? ' has-danger' : '' }}">
       {{ Form::text('temporal_2', null, $attributes = $errors->has('temporal_2') ? array('placeholder' => 'Temporal 2', 'class' => 'form-control is-invalid') : array('placeholder' => 'Temporal 2', 'class' => 'form-control') ) }}
       @if ($errors->has('temporal_2'))
@@ -195,7 +195,7 @@
         </div>
       @endif
     </div>
-  </div>
+  </div> --}}
 @endif
 
 <div class="col-12">
