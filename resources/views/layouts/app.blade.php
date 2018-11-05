@@ -79,9 +79,9 @@
                     <i class="ni ni-bold-down" style="margin-top: 2px"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-inner-primary_dropdown_1">
-                    <a class="dropdown-item" href="#">Cuenta</a>
+                    {{-- <a class="dropdown-item" href="#">Cuenta</a>
                     <a class="dropdown-item" href="#">Panel</a>
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div> --}}
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Cerrar sesión
                     </a>
