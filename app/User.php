@@ -46,5 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class, 'paciente');
     }
+    public function Diagnostic ()
+    {
+        return $this->hasMany(Diagnostic::class);
+    }
 
 }

@@ -125,6 +125,21 @@ Breadcrumbs::register('add-cita', function($breadcrumbs, $e)
     $breadcrumbs->parent('especialidad-paciente');
     $breadcrumbs->push('Nueva cita', route('add_event', $e));
 });
+Breadcrumbs::register('diagnostico', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Diagnosticos', route('diagnostico.index'));
+});
+Breadcrumbs::register('create-diagnostico', function($breadcrumbs, $e)
+{
+    $breadcrumbs->parent('diagnostico');
+    $breadcrumbs->push('Nuevo diagnostico', route('diagnostico.create', $e->id));
+});
+Breadcrumbs::register('edit-diagnostico', function($breadcrumbs, $e)
+{
+    $breadcrumbs->parent('diagnostico');
+    $breadcrumbs->push('Editar diagnostico', route('diagnostico.create', $e->id));
+});
 
 
 

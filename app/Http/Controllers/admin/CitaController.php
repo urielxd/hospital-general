@@ -168,14 +168,14 @@ class CitaController extends Controller
                 $events = Event::where('doctor', $user->id)->get();
                 $event = $user->events_doctor()->overlapsWith($from, $to, 'start', 'end')->exists();
                 if (!$event) {
-                    Event::create([
+                    $evento = Event::create([
                         'doctor' => $user->id,
                         'start' => $from,
                         'end' => $to,
                         'paciente' => $paciente
                     ]);
                     toast('Cita agendada','success','top-right')->autoClose(6000);
-                    return redirect()->route('citas.index');
+                    return redirect()->route('option.pdf', $evento->id);
                 } else {
                     toast('No esta disponible, intenta con otra fecha','error','center')->autoClose(6000);
                     return redirect()->back();

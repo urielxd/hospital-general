@@ -1,5 +1,15 @@
 <div class="container mt-4">
   <div class="row">
+    <div class="col-12">
+      <a href="{{ route('diagnostico.index') }}" class="btn btn-primary text-white mb-3">
+        Historial de diagnosticos
+      </a>
+    </div>
+    <div class="col-12">
+      <div class="alert alert-warning">
+        Presiona click en la cita para agregar un diagnostico.
+      </div>
+    </div>
     <div class="col-6">
       <h4 class="display-4 line-text position-relative">
         Citas pendientes
@@ -10,5 +20,50 @@
     </div>
   </div>
 </div>
+
+@section('js')
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      $('#calendar').fullCalendar({
+        locale: 'es',
+        selectable: true,
+        eventClick: function(calEvent, jsEvent, view) {
+          let id = calEvent.id;
+          swal({
+            title: "¿Escribir diagnostico?",
+            text: "",
+            buttons: ['Cerrar', 'Escribir diagnostico'],
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              window.location.assign(`/diagnostico/${id}/create` )
+            } 
+          });
+
+        },
+        buttonText: {
+          today:    'Hoy',
+          month:    'Mes',
+          week:     'Semana',
+          day:      'Dia',
+          list:     'Lista'
+        },
+        defaultView: 'listDay',
+        header: {
+          center: 'title',
+          left:  'today prev,next',
+          right: 'month,year,agendaWeek,listDay'
+        },
+        eventSources: [
+          {
+            url: '/myevents',
+            color: '#16284e',
+            textColor: '#FFF'
+          }
+        ]
+      });
+    </script>
+@endsection
 
 

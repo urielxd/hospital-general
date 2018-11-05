@@ -19,19 +19,5 @@ class UserSeeder extends Seeder
         'avatar' => 'none',
         'role' => 'admin'
       ]);
-      User::create([
-        'name' => 'Dr. Eduardo Ejemplo',
-        'email' => 'primero@mail.com',
-        'password' => bcrypt('secret'),
-        'avatar' => 'none',
-        'role' => 'doctor'
-      ]);
-      User::create([
-        'name' => 'Dra. Maria Ejemplo',
-        'email' => 'segundo@mail.com',
-        'password' => bcrypt('secret'),
-        'avatar' => 'none',
-        'role' => 'doctor'
-      ]);
     }
 }

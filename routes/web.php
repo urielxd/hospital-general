@@ -33,12 +33,25 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cita', 'EventController');
     Route::get('allevent', 'EventController@events');
     Route::get('myevents', 'EventController@myevents');
+
+    Route::get('pdf/{id}', 'HomeController@pdf_show')->name('option.pdf');
+    Route::get('export/pdf/{id}', 'HomeController@pdf')->name('make.pdf');
+
 });
 
 Route::middleware(['auth', 'profile'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/especialidad', 'EspecialidadController@index')->name('especialidad');
     Route::get('/{id}/cita', 'EventController@create')->name('add_event');
+});
+
+Route::middleware(['auth', 'profile', 'admin'])->group(function () {
+    Route::get('diagnostico', 'DiagnosticoController@index')->name('diagnostico.index');
+    Route::get('diagnostico/{id}/create', 'DiagnosticoController@create')->name('diagnostico.create');
+    Route::post('diagnostico/{id}/store', 'DiagnosticoController@store')->name('diagnostico.store');
+    Route::get('diagnostico/{id}/edit', 'DiagnosticoController@edit')->name('diagnostico.edit');
+    Route::put('diagnostico/{id}/update', 'DiagnosticoController@update')->name('diagnostico.update');
+    Route::delete('diagnostico/{id}', 'DiagnosticoController@destroy')->name('diagnostico.delete');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -71,6 +84,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('eventos', 'Api\CitaController');
         Route::resource('apiadmin','Api\AdminController');
         Route::get('filter','Api\CitaController@filter');
+        Route::get('diagnosticos','DiagnosticoController@index_json');
     });
 });
 

@@ -121,14 +121,14 @@ class EventController extends Controller
                 $events = Event::where('doctor', $user->id)->get();
                 $event = $user->events_doctor()->overlapsWith($from, $to, 'start', 'end')->exists();
                 if (!$event) {
-                    Event::create([
+                    $evento = Event::create([
                         'doctor' => $user->id,
                         'paciente' => Auth::user()->id,
                         'start' => $from,
                         'end' => $to
                     ]);
                     toast('Cita agendada','success','top-right')->autoClose(6000);
-                    return redirect()->route('home');
+                    return redirect()->route('option.pdf', $evento->id);
                 } else {
                     toast('No esta disponible, intenta con otra fecha','error','center')->autoClose(6000);
                     return redirect()->back();

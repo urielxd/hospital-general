@@ -32,4 +32,9 @@ class Event extends Model
         $especialidad = $doctor->especialidad->name;
         return $doctor->nombre;
     }
+
+    public function Diagnostic ()
+    {
+        return $this->hasMany(Diagnostic::class);
+    }
 }

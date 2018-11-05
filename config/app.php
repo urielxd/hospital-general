@@ -181,6 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -235,7 +236,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'BootstrapComponents' => Appstract\BootstrapComponents\BootstrapComponentsFacade::class,
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
