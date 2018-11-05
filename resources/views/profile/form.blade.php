@@ -166,16 +166,6 @@
       @endif
     </div>
   </div>
-  <div class="col-md-6 col-12">
-    <div class="form-group{{ $errors->has('relacion') ? ' has-danger' : '' }}">
-      {{ Form::text('relacion', null, $attributes = $errors->has('relacion') ? array('placeholder' => 'Relación', 'class' => 'form-control is-invalid') : array('placeholder' => 'Relación', 'class' => 'form-control') ) }}
-      @if ($errors->has('relacion'))
-        <div class="invalid-feedback">
-            <strong>{{ $errors->first('relacion') }}</strong>
-        </div>
-      @endif
-    </div>
-  </div>
 
   <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('temporal') ? ' has-danger' : '' }}">
@@ -183,6 +173,26 @@
       @if ($errors->has('temporal'))
         <div class="invalid-feedback">
             <strong>{{ $errors->first('temporal') }}</strong>
+        </div>
+      @endif
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group{{ $errors->has('relacion') ? ' has-danger' : '' }}">
+      {{ Form::select('relacion', ['Si', 'No'] ,null, $attributes = $errors->has('relacion') ? array('placeholder' => 'Seguro popular', 'class' => 'form-control is-invalid') : array('placeholder' => 'Seguro popular', 'class' => 'form-control') ) }}
+      @if ($errors->has('relacion'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('relacion') }}</strong>
+        </div>
+      @endif
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group{{ $errors->has('temporal_2') ? ' has-danger' : '' }}">
+      {{ Form::select('temporal_2', ['Si', 'No'] ,null, $attributes = $errors->has('temporal_2') ? array('placeholder' => 'Prospera', 'class' => 'form-control is-invalid') : array('placeholder' => 'Prospera', 'class' => 'form-control') ) }}
+      @if ($errors->has('temporal_2'))
+        <div class="invalid-feedback">
+            <strong>{{ $errors->first('temporal_2') }}</strong>
         </div>
       @endif
     </div>

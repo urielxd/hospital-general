@@ -70,7 +70,9 @@ class ProfileController extends Controller
                 'talla' => 'required',
                 'discapacidad' => 'required',
                 'relacion' => 'required',
-                'migrante' => 'required'
+                'migrante' => 'required',
+                'temporal' => 'required',
+                'temporal_2' => 'required'
             ]);
         }
         toast('Perfil creado con exito.','success','top-right')->autoClose(6000);
