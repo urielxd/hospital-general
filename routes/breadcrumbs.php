@@ -140,6 +140,11 @@ Breadcrumbs::register('edit-diagnostico', function($breadcrumbs, $e)
     $breadcrumbs->parent('diagnostico');
     $breadcrumbs->push('Editar diagnostico', route('diagnostico.create', $e->id));
 });
+Breadcrumbs::register('profileEdit', function($breadcrumbs, $e)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Editar perfil', route('diagnostico.create', $e->id));
+});
 
 
 

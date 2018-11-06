@@ -97,9 +97,10 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit($id)
     {
-        //
+        $especialidad = Especialidad::pluck('name', 'id');
+        return view('profile.edit', compact('especialidad'));
     }
 
     /**
@@ -109,9 +110,12 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, $id)
     {
-        //
+        $profile = Auth::user()->profile;
+        $profile->update($request->all());
+        toast('Perfil actualizado con exito.','success','top-right')->autoClose(6000);
+        return redirect()->route('home');
     }
 
     /**

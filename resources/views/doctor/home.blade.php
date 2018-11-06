@@ -1,9 +1,14 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-12">
-      <a href="{{ route('diagnostico.index') }}" class="btn btn-primary text-white mb-3">
-        Historial de diagnosticos
-      </a>
+    <div class="col-12">      
+      <div class="btn-group">
+        <a href="{{ route('diagnostico.index') }}" class="btn btn-primary text-white mb-3">
+          Historial de diagnosticos
+        </a>
+        <a href="{{ route('perfil.edit', Auth::user()->profile['id']) }}" class="btn btn-dark text-white mb-3">
+          Editar perfil
+        </a>
+      </div>
     </div>
     <div class="col-12">
       <div class="alert alert-warning">

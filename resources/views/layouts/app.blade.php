@@ -72,9 +72,6 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Ayuda</a>
-            </li>
             @if (Auth::user())
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="#" id="nav-inner-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
