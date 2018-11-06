@@ -93,7 +93,7 @@
 
   <div class="col-md-6 col-12">
     <div class="form-group{{ $errors->has('derechohabiencia') ? ' has-danger' : '' }}">
-      {{ Form::select('derechohabiencia', ['Imss', 'Issste','Seguro popular', 'Prospera', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
+      {{ Form::select('derechohabiencia', ['Imss', 'Issste', 'Otra'] ,null, $attributes = $errors->has('derechohabiencia') ? array('placeholder' => 'Derechohabiencia', 'class' => 'form-control is-invalid') : array('placeholder' => 'Derechohabiencia', 'class' => 'form-control') ) }}
       @if ($errors->has('derechohabiencia'))
         <div class="invalid-feedback">
             <strong>{{ $errors->first('derechohabiencia') }}</strong>
