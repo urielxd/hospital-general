@@ -99,11 +99,8 @@
                                   <small>Si eres paciente inicia sesión con:</small>
                                 </div>
                                 <div class="btn-wrapper text-center">
-                                    <a class="btn btn-neutral btn-icon btn-block btn-lg" href="{{ Route('social.auth', 'google')  }}">
-                                        <span class="btn-inner--icon">
-                                            <img src="{{ asset('img/google.svg') }}" alt="">
-                                        </span>
-                                        <span class="btn-inner--text">Entrar con google</span>
+                                    <a class="btn btn-neutral btn-icon btn-block btn-lg" href="{{ Route('register')  }}">
+                                        <span class="btn-inner--text">Registrarme</span>
                                     </a>
                                 </div>
                               </div>

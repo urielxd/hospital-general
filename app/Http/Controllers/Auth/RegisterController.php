@@ -65,6 +65,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar' => "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $data['email'] ) ) ) . "?d=" ."&s=" . 40,
             'password' => bcrypt($data['password']),
         ]);
     }
