@@ -94,19 +94,9 @@
                         @else
 
                             <div class="card bg-secondary shadow border-0">
-                              <div class="card-header bg-white pb-5">
-                                <div class="text-muted text-center mb-3">
-                                  <small>Si eres paciente inicia sesión con:</small>
-                                </div>
-                                <div class="btn-wrapper text-center">
-                                    <a class="btn btn-neutral btn-icon btn-block btn-lg" href="{{ Route('register')  }}">
-                                        <span class="btn-inner--text">Registrarme</span>
-                                    </a>
-                                </div>
-                              </div>
-                              <div class="card-body px-lg-5 py-lg-5">
+                              <div class="card-body bg-white px-lg-5 py-lg-5">
                                 <div class="text-center text-muted mb-4">
-                                  <small>O si eres doctor o administrador con:</small>
+                                  <small>Inicia sesión:</small>
                                 </div>
                                 <form role="form" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
@@ -138,10 +128,20 @@
                                     </label>
                                   </div>
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-primary my-4">Entrar</button>
+                                    <button type="submit" class="btn btn-primary my-4 btn-block">Entrar</button>
                                   </div>
                                 </form>
                               </div>
+                                <div class="card-footer bg-secondary pb-5">
+                                  <div class="text-muted text-center mb-3">
+                                    <small>Registrate si eres paciente:</small>
+                                  </div>
+                                  <div class="btn-wrapper text-center">
+                                      <a class="btn btn-neutral btn-icon btn-block btn-lg" href="{{ Route('register')  }}">
+                                          <span class="btn-inner--text">Registrarme</span>
+                                      </a>
+                                  </div>
+                                </div>
                             </div>
 
                         @endif
