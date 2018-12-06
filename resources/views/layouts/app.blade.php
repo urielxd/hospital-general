@@ -68,7 +68,7 @@
           </div>
           <ul class="navbar-nav ml-lg-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('home') }}">Inicio
+              <a class="nav-link" href="/">Inicio
                 <span class="sr-only">(current)</span>
               </a>
             </li>

@@ -176,14 +176,6 @@
                                   @endforeach
                                 </div>
                               </div>
-                              <div class="card-footer">
-                                  <div class="text-center">
-                                    <a href="{{ route('add_event', $e->id) }}" class="btn btn-icon btn-3 btn-outline-default" >
-                                      <span class="btn-inner--icon"><i class="ni ni-active-40"></i></span>
-                                        <span class="btn-inner--text">Agendar</span>
-                                    </a>
-                                  </div>
-                              </div>
                             </div>
                           </div>
                         @endif

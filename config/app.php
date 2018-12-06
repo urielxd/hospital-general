@@ -182,6 +182,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        App\Providers\GmailService::class,
 
     ],
 
