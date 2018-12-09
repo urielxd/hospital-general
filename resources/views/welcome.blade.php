@@ -98,14 +98,14 @@
                                 <div class="text-center text-muted mb-4">
                                   <small>Inicia sesión:</small>
                                 </div>
-                                <form role="form" method="POST" action="{{ route('login') }}">
+                                <form role="form" method="POST" action="{{ route('custom.login') }}">
                                     {{ csrf_field() }}
                                   <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <div class="input-group input-group-alternative">
                                       <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                       </div>
-                                      <input name="email" class="form-control" placeholder="Email" type="email" value="{{ old('email') }}" required autofocus>
+                                      <input name="email" class="form-control" placeholder="Email o Curp" type="text" value="{{ old('email') }}" required autofocus>
                                     </div>
                                     @if ($errors->has('email'))
                                       <div class="invalid-feedback d-block">
@@ -255,5 +255,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
+        @include('sweetalert::alert')
     </body>
 </html>

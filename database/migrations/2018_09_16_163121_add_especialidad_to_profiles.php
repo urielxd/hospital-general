@@ -18,7 +18,9 @@ class AddEspecialidadToProfiles extends Migration
                 ->unsigned()->nullable();
             $table->foreign('especialidad_id')
                 ->references('id')
-                ->on('especialidads');
+                ->on('especialidads')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

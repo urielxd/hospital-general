@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users|gmail',
             'password' => 'required|string|min:6|confirmed',
+            'curp' => 'required|min:18|max:18|unique:users',
         ]);
     }
 
@@ -67,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'curp' => $data['curp'],
             'avatar' => "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $data['email'] ) ) ) . "?d=" ."&s=" . 40,
             'password' => bcrypt($data['password']),
         ]);

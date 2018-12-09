@@ -28,7 +28,9 @@ class CreateEventsTable extends Migration
                 ->unsigned();
             $table->foreign('doctor')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->string('title')->nullable();
             $table->string('description')->nullable();

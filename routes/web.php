@@ -13,6 +13,8 @@
 
 use App\Especialidad;
 
+Route::post('/custon/login', 'LoginController@authenticate')->name('custom.login');
+
 Route::get('/', function () {
     $especialidad = Especialidad::all();
     return view('welcome', compact('especialidad'));

@@ -14,7 +14,21 @@
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                <div class="form-group{{ $errors->has('curp') ? ' has-error' : '' }}">
+                                    <label for="name" class="">Curp:</label>
+
+                                    <input id="curp" type="text" class="form-control" name="curp" value="{{ old('curp') }}" required autofocus>
+                                    <input id="avatar" value="null" type="hidden" class="form-control" name="avatar">
+
+                                    @if ($errors->has('curp'))
+                                        <span class="invalid-feedback d-block">
+                                            <strong>{{ $errors->first('curp') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label for="name" class="">Nombre:</label>
 
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -28,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="">Correo:</label>
 
                                     <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -41,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                     <label for="password" class="">Contraseña:</label>
 
                                     <input id="password" type="password" class="form-control" name="password" required>
@@ -60,13 +74,11 @@
                                     <input id="password-confirm" type="password" class="form-control {{ $errors->has('password-confirm') ? ' is-invalid' : '' }}" name="password_confirmation" required>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-12 col-12">
                                 <div class="form-group">
-                                    <div class="col-md-6 ">
-                                        <button type="submit" class="btn btn-primary">
-                                            Registrarme
-                                        </button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        Registrarme
+                                    </button>
                                 </div>
                             </div>
 
