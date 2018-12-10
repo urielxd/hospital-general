@@ -60371,7 +60371,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['name'],
   data: function data() {
     return {
-      date: ''
+      date: '',
+      minDate: moment().format()
     };
   }
 });
@@ -68914,10 +68915,10 @@ var render = function() {
           "input-class": "form-control",
           format: "yyyy-MM-dd HH:mm:ss",
           phrases: { ok: "Continuar", cancel: "Salir" },
-          "hour-step": 2,
-          "minute-step": 15,
-          "week-start": 2,
-          "use12-hour": "",
+          "hour-step": 1,
+          "minute-step": 40,
+          "week-start": 7,
+          "min-datetime": "07:00:00",
           auto: ""
         },
         model: {
